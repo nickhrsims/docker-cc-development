@@ -7,6 +7,7 @@ ARG UID=1000
 ARG GID=1000
 ARG USERNAME=ubuntu
 ARG PASSWORD=ubuntu
+ARG TZ=US/Eastern
 
 SHELL ["/bin/bash", "-c"]
 
@@ -51,11 +52,20 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update      \
   && apt-get install -y \
+  apt-utils             \
+  && apt-get install -y \
   tzdata                \
+  && (yes | unminimize) \
+  && apt-get install -y \
+  ubuntu-minimal        \
+  ubuntu-server-minimal \
   gnupg2                \
+  net-tools             \
+  vim                   \
   git                   \
   curl                  \
   wget                  \
+  w3m                   \
   file                  \
   tar                   \
   gzip                  \
@@ -66,6 +76,8 @@ RUN apt-get update      \
   cmake                 \
   build-essential       \
   sudo                  \
+  man                   \
+  manpages              \
   && apt-get clean      \
   && rm -rf /var/lib/apt/lists/*
 
