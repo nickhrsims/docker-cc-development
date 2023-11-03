@@ -99,10 +99,3 @@ RUN chown ${USERNAME}:${USERNAME} -R /home/linuxbrew
 RUN  (if [[ ! -d /etc/profile.d ]]; then mkdir /etc/profile.d; fi)                           \
   && (echo 'export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH' >> /etc/profile.d/linuxbrew.sh)
 
-
-## ---------------------------------------------------------
-## User Operations ( run as user )
-## ---------------------------------------------------------
-
-USER $USERNAME
-WORKDIR /home/${USERNAME}
