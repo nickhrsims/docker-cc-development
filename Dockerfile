@@ -96,6 +96,9 @@ ENV NONINTERACTIVE=1
 
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 RUN chown ${USERNAME}:${USERNAME} -R /home/linuxbrew
+RUN  (if [[ ! -d /etc/profile.d ]]; then mkdir /etc/profile.d; fi)                           \
+  && (echo 'export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH' >> /etc/profile.d/linuxbrew.sh)
+
 
 ## ---------------------------------------------------------
 ## User Operations ( run as user )
