@@ -72,6 +72,7 @@ RUN apt-get update      \
   bzip2                 \
   xz-utils              \
   gcc                   \
+  pkg-config            \
   make                  \
   cmake                 \
   build-essential       \
